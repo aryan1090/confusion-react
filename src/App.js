@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import {Navbar,NavbarBrand} from 'reactstrap';
+import Main from './components/MainComponent';
+import {BrowserRouter} from 'react-router-dom';
+import { Provider } from 'react-redux';
+import {ConfigureStore} from './redux/configureStore'
 
-function App() {
-  return (
-  <div className="App">
-      <Navbar dark color="primary">
-        <div className="container">
-          <NavbarBrand href="/">
-            Ristorante con Fusion
-          </NavbarBrand>
-        </div>
-      </Navbar>
-    </div>
-  );
+const store  = ConfigureStore();
+
+class App extends Component{
+  
+    render() {
+      return (
+      <Provider store={store}>
+        <BrowserRouter>
+          <div>
+            <Main/>
+          </div>
+        </BrowserRouter>
+      </Provider>
+    );
+  }
 }
 
 export default App;
